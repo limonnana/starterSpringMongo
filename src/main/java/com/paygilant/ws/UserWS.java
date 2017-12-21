@@ -44,9 +44,9 @@ public class UserWS {
 		return userClient.getUserByEmail(email);
 	}
 	
-	@RequestMapping("/getuserbyname/{name}")
-	public String getUserByName(@PathVariable("name")String name) {
-		return userClient.getUserByEmail(name);
+	@RequestMapping("/getuserbyname/{lastName}")
+	public String getUserByName(@PathVariable("lastName")String lastName) {
+		return userClient.getUsersByLastName(lastName);
 	}
 
 }
