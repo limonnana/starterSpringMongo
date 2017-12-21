@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import com.google.gson.Gson;
 import com.paygilant.entities.User;
@@ -16,13 +18,18 @@ import com.paygilant.repositories.UserRepository;
 
 @EnableMongoRepositories(value = "com.paygilant.repositories")
 @SpringBootApplication(scanBasePackages="com.paygilant")
-public class Starter03Application {
+public class Starter03Application extends SpringBootServletInitializer{
 	
 	
 	private static final Logger LOGGER =  LoggerFactory.getLogger(Starter03Application.class);
 	
 	@Autowired
 	UserRepository userRepository;
+	
+	@Override
+    protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
+        return application.sources(Starter03Application.class);
+    }
 
 	public static void main(String[] args) {
 		SpringApplication.run(Starter03Application.class, args);

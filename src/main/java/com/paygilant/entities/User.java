@@ -12,6 +12,9 @@ public class User {
 	private String name;
 	private String lastName;
 	
+	@Indexed(unique = true)
+	private String email;
+	
 	public String getId() {
 		return id;
 	}
@@ -19,9 +22,6 @@ public class User {
 	public void setId(String id) {
 		this.id = id;
 	}
-
-	@Indexed(unique = true)
-	private String email;
 
 	public String getName() {
 		return name;
